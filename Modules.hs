@@ -1,6 +1,11 @@
 import Data.List
 import Data.Function (on)
 import Data.Char
+import qualified Data.Map as Map
+import qualified Data.Set as Set
+import qualified Geometry.Sphere as Sphere
+import qualified Geometry.Cuboid as Cuboid
+import qualified Geometry.Cube as Cube
 
 numUniques :: (Eq a) => [a] -> Int
 numUniques = length . nub
@@ -40,4 +45,22 @@ encode shift msg =
 decode :: Int -> String -> String
 decode shift = encode (negate shift)
 
--- TODO: Data.Map
+phoneBook =
+    [("betty", "555-2938")
+    ,("bonnie", "452-2928")
+    ,("patsy", "493-2928")
+    ,("lucile", "205-2928")
+    ,("wendy", "939-8282")
+    ,("penny", "853-2492")
+    ]
+
+-- this is equivalent to lookup from Data.List
+findKey :: (Eq k) => k -> [(k,v)] -> Maybe v
+findKey key = foldl (\a (k,v) -> if key == k then Just v else a) Nothing
+
+text1 = "I just had an anime dream. Anime... Reality... Are they so different?"
+text2 = "The old man left his garbage can out and now his trash is all over my lawn!"
+
+-- The remainder of modules is found in Geometry/
+
+unitSphereSA = Sphere.area 1
