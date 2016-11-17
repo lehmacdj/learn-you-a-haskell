@@ -58,11 +58,15 @@ main7 = do
 main8 = interact $ unlines . filter ((<10) . length) . lines
 
 -- Palindrome
-main = interact $
+main9 = interact $
     unlines
     . map (\line -> if reverse line == line
         then "is a palindrome"
         else "not a palindrome")
     . lines
 
--- About to start working with files
+-- Todo program is in todo.hs
+
+-- Random functionallity from System.Random
+
+-- use `catch` from System.IO.Error
